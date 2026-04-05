@@ -1,0 +1,28 @@
+/*
+ * Theme configuration
+ *
+ * All color values are RGB triplets (no commas) so Tailwind can apply
+ * opacity modifiers like bg-primary/50. To change the theme, swap
+ * the values below — every component picks them up automatically.
+ */
+
+:root {
+  /* Primary — blue tones (used for accents, links, highlights) */
+  --color-primary: 59 130 246;         /* blue-500 */
+  --color-primary-light: 147 197 253;  /* blue-300 */
+
+  /* Secondary — deep crimson (header, brand element) */
+  --color-secondary: 127 29 29;        /* red-900 */
+  --color-secondary-light: 252 165 165;/* red-300 */
+
+  /* Neutral — slate tones for backgrounds, borders, muted elements */
+  --color-neutral: 51 65 85;           /* slate-700 */
+  --color-neutral-dark: 30 41 59;      /* slate-800 */
+  --color-neutral-muted: 30 41 59;     /* slate-800 */
+
+  /* Page */
+  --color-bg: 2 6 23;                 /* slate-950 */
+  --color-text: 255 255 255;          /* white */
+  --color-text-muted: 148 163 184;    /* slate-400 */
+  --color-border: 71 85 105;          /* slate-600 */
+}
