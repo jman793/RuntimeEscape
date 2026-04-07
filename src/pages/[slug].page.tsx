@@ -6,16 +6,29 @@ import Head from "next/head";
 import path from "path";
 import { POSTS_PATH } from "./constants";
 
+const mdxComponents = {
+  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+    const isExternal = props.href?.startsWith('http');
+    return (
+      <a
+        {...props}
+        className="text-primary-light underline decoration-primary/40 underline-offset-4 hover:text-primary hover:decoration-primary transition-colors"
+        {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      />
+    );
+  },
+};
+
 export default function PostPage({ source }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div>
       <Head>
         <title className="text-sky-600 border-2 border-black">{source.frontmatter.title as string}</title>
       </Head>
-      <div className="text-center">
+      <div className="w-1/2 mx-auto">
         <MDXRemote
           {...source}
-        // Load custom components here
+          components={mdxComponents}
         />
       </div>
     </div>
