@@ -1,0 +1,160 @@
+---
+title: "Toolbox and Toolshed"
+description: "My first, most useful, and most successful personal projects. Creating my own Dotfiles and Neovim setup has propelled me into this journey. I use this setup professionally and personally. Sometimes I change the tools I use, but the fundamental benefits of this project have not changed. I believe this is one of the best projects anybody in IT, Software Engineering, or Cybersecurity could do for themselves."
+date: "2026-04-06"
+---
+
+<span className="p-4">
+## The Initial Idea
+
+Generally speaking, the idea for this project came about from a YouTube video detailing somebody else's approach to this [YouTube Video](https://www.youtube.com/watch?v=iagjeLuxnMs).
+I knew I wanted to switch to using neovim at work, and I thought this would enable me to do that. There are tons of videos and repositories out there, most of which have a similar setup to mine.
+I'm not trying to make the case that my setup is somehow superior; I just want this to demonstrate why I think these tools help me.
+</span>
+
+<span className="p-4">
+## The Goal
+My goal originally was to create a way to bootstrap a new computer for my programming setup quickly with minimal manual configuration. 
+I work on MacOS at work and for my personal laptop, so that's the platform I went with. If I could go back, I would switch to Linux and reconfigure this to work on either platform.
+Maybe this is a great feature to add someday, but for now Mac has served me well.
+<br></br>
+Eventually the goal shifted into creating a "living document" of my tools that I can swap around whether at work or at home. 
+This is nice since I don't have to re-learn anything when swapping between environments, I don't have any differences in keybinds, plugins, or workflows across all of my machines.
+I also tend to work on a cloud server whenever I can, and having my setup be portable to those servers makes that practical.
+</span>
+
+<span className="p-4">
+## The Pillars of the Setup
+This is the bread and butter of my setup. These four things are what make a terminal based setup so powerful.
+Terminal emulation lets me have my command line at my fingertips while keeping some aesthetics/configuration customized.
+Terminal multiplexing lets me do multiple tasks simultaneously, as well as make long-running tasks easy to track.
+Text editing is essential for anybody editing files, but my approach was to have something keyboard based that I could customize and change easily.
+The shell is my interface into the computer that lets me solve many tasks without needing to set up runtime environments, or compile anything.
+Each of these tools could have their own article written about them, but I'll just keep this high level.
+
+</span>
+
+<span className="p-4">
+  ### The Shell
+  For my case I chose [bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) as I thought it would be cool to be old school. About every other week I tell myself I'm going to switch to Zshell, but I haven't yet. Why fix what isn't broken?
+  The shell is arguably the most important decision for this endeavor as interacting with the shell (and being proficient at it) is the biggest productivity gain you will get interacting with your computer. 
+  I am by no means a master at the shell, but this book [Efficient Linux at the Command Line](https://byrdsbooks.com/book/9781098113407) helped me greatly. 
+  It's hard to put into words how much faster you can get when you bother to learn the shell, but my general advice is to use the shell (and shell scripting) whenever possible/practical. 
+  It's always my first thought when being presented a problem because bash can run pretty much anywhere, and it's blazingly fast. The syntax may seem strange at first, but the integration it has with your command line makes it an irreplaceable tool.
+</span>
+
+<span className="p-4">
+### Text Editing
+
+Everybody who works with computers needs a text editor/IDE. I'll dedicate this section to why I chose [Neovim](https://neovim.io/) over other alternatives.
+For me the main gain with neovim is my ability to solely use the keyboard to navigate around my files as well as let me be rid of using a file tree to navigate my project.
+While vim also provides these benefits in a similar fashion it doesn't allow for my configuration to be written in Lua, which is a huge turn-off to me personally.
+Lua is an easy scripting language that is easy to read. There are tons of code snippets out there, and cool neovim setups that you should use for inspiration.
+
+<br></br>
+If you are new to the vim motions, I would suggest reading some articles online, and using the vim plugin with your current editor (it has one I promise). 
+When you are ready to make the switch to Neovim I would highly suggest using a neovim distribution at first like [LazyVim](http://www.lazyvim.org/) or [NvChad](https://nvchad.com/).
+Personally I chose NvChad at first and eventually switched off of it when I wanted to set my own defaults. This is a normal process from what I gather. 
+
+<br></br>
+Vim motions are wildly powerful and memorizing just a few can really help you navigate around files easily. 
+Even if you don't move to Vim, using vim motions in your editor via the plugin is worth it alone.
+I would say the main benefit to using Neovim is integrating vim motions into other aspects of your code; for example in my setup I can jump between "diagnostics" (errors, and warnings) by pressing "]d".
+I even created a custom keybind to jump specifically to the next error.
+
+<br></br>
+My two favorite Neovim plugins are [Telescope](https://github.com/nvim-telescope/telescope.nvim), and [Oil](https://github.com/stevearc/oil.nvim).
+Telescope is a fuzzy finder that allows you to quickly find files and locations based on searches ("space ff" to find files, "space w" to grep files under my working directory, "space fo" for sorted recently opened files, and "space fg" for files that have git changes)
+Oil — this is a weird one for people that don't use vim, but the best way I can describe it is that it lets you view and edit your file system like a text file. 
+It basically pulls up your files in a text file that you can edit freely and those changes get propagated to your file system. This is wickedly powerful and I've never seen it anywhere else.
+Vim has so many powerful features that I can't cover them all here. My advice is that if Vim/Neovim even remotely pique your interest then take the plunge.
+</span>
+
+<span className="p-4">
+### Terminal Emulation
+
+I've come down to using [Ghostty](https://ghostty.org/) for my terminal emulation. This tool has amazing documentation, has a "snappy" feel to it, is responsive, fast, lightweight, and renders images.
+This tool takes on a "zero configuration" philosophy which I quite enjoy as I think the tool has sensible defaults.
+Ironically tools with a zero configuration setup are the best at allowing me to customize them. I'm less concerned with "ironing out kinks" in my setup, and more just tailoring specific things to my liking.
+A good example of things that I change to my liking are that I re-theme my editor and terminal every few weeks (currently I'm on [catppuccin](https://catppuccin.com/)), these are things I can add as one line to my ghostty configuration and change easily.
+That's in contrast to my font size I enjoy. I tend to gravitate between 12 and 14pt fonts, so I just set it in ghostty and now no matter what operating system I'm on it will always be the same.
+The tool does not take away my ability to customize and make permanent my setup for it.
+Honestly the biggest draw for this tool is how aesthetic I find it; I can't explain why, but I just find it to look and feel great to use which I think is the most important part of a terminal emulator.
+</span>
+
+<span className="p-4">
+### Terminal Multiplexing
+
+[Tmux](https://github.com/tmux/tmux/wiki) is my tool of choice here. I think most people who use terminal multiplexing use tmux, so I'll dedicate this to why you should use multiplexing.
+In a basic sense this goes back to the same reason you would use a window manager, or learn hot keys. It's fast, efficient, and good for your wrists to use the keyboard as much as possible rather than switching to a mouse.
+tmux allows for a lightweight configuration to give you a super power of managing three layers of terminal windows (sessions, windows, and panes). Most multiplexers have these same three levels in one way or another.
+
+- Sessions help you easily switch between projects or tasks (I usually use them for managing multiple simultaneous tasks)
+- Windows help you to easily jump between programs for the same task (say you want Claude Code to be easily accessible, create a new window and at the press of a key you can swap between them)
+- Panes help you have several things on your screen at once (I tend not to use this, but I use the same concept in my text editor all the time)
+
+Another huge benefit to multiplexing is running background tasks, you can start a long running terminal output in a new window or session and then simply detach or move away from that window or session.
+Then when you're ready just come back to it later.
+</span>
+
+## The Other Tools
+These tools are also an important part of my setup, but they aren't required for every setup.
+You could get by without them, but why would you want to?
+
+<span className="p-2">
+#### [Starship](https://starship.rs/)
+
+This tool gives me information at a glance on my shell prompt which I am a big fan of (shell name, hostname, battery, git branch, language detection)
+</span>
+
+
+<span className="p-2">
+#### [Aerospace](https://github.com/nikitabobko/AeroSpace)
+
+Tiling window manager with some defaults to my most used applications. This is great because it allows me to jump between my open applications with one key press. I also have some good defaults for my most used apps. This is a huge timesaver, and I would highly recommend you setup a window manager to your liking. It is a good mix of a productivity booster, and a frustration reducing tool. In general this just helps the "flow" of my day to day work.
+I considered putting this as a pillar of my setup. I left it out because it's great for my flow, but it isn't what I would call essential.
+</span>
+
+<span className="p-2">
+#### [Setup Script](https://github.com/jman793/dotfiles/blob/main/setup)
+This bundles everything together by allowing me to mostly complete my setup, and sets up some of my preferred defaults. 
+I can run this and have my machine bootstrapped and ready to work on. This script does the following steps:
+<br></br>
+<ul>
+<li>- Sets up my directory structure to my liking</li>
+<li>- Installs my package manager (brew for MacOS)</li>
+<li>- Installs the packages I like to use </li>
+<li>- Download the font I use for my terminal.</li>
+</ul>
+</span>
+
+<span className="p-4">
+## The Toolshed
+
+I think for anybody in computing they know the obvious answer is to store it on GitHub, I won't drone on about why, it speaks for itself.
+All I will say is that it's extremely important to have this version controlled as breaking this setup can break fundamental parts of how you use a computer.
+You don't want to be relatively stuck with decisions you could easily go back on should you choose to.
+I can wholeheartedly recommend storing these on GitHub even if you don't think you will ever pull them. It's a good habit to store your work somewhere.
+Plus extra practice with git is always good for a software engineer as it will probably be the tool you use the most (even if you don't realize you're interacting with it).
+
+</span>
+
+<span className="p-4">
+## The Results
+I was able to bootstrap a new work computer with my neovim and terminal tools within just a few minutes. This was quite a step up from needing to manually re-install VS Code/IntelliJ plugins every time it was deleted.
+Creating my custom setup brought me a lot of joy to code again, and has an immeasurable impact on my productivity day to day. This switch has allowed me to act more on the business side and spend less time sifting windows.
+Another major impact is that it takes my mindset away from large scale projects to solve small problems. 
+When I get asked to do a small piece of work that doesn't serve production traffic I am quick to solve this with a quick bash script, or some simple linux commands to analyze a file.
+It also keeps me in the mindset of CLI tools which interface the best with AI (due to more efficient use of the context window), and are more efficient to use than GUIs.
+
+<br></br>
+What's most interesting about having a custom setup is that while my tools are the same as many others I have completely different workflows and tricks that I use to more efficiently navigate this setup. 
+This is due to my custom plugins, keybinds, workflows, and the way my brain works.
+</span>
+
+<span className="p-4">
+## Appendix
+
+- Dotfiles Repo — [jman793/dotfiles](https://github.com/jman793/dotfiles)
+- Neovim Config — [jman793/init.lua](https://github.com/jman793/init.lua)
+</span>
