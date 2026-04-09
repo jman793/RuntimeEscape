@@ -9,9 +9,6 @@ export default function Header() {
         <span className="p-2">
           <Link href="/" className="header-link">Home</Link>
         </span>
-        <span className="p-2">
-          <Link href="/about" className="header-link">About me</Link>
-        </span>
       </div>
     </div>
   )

@@ -10,7 +10,7 @@ export default function Home({ postPreviews }: InferGetStaticPropsType<typeof ge
   return (
     <main>
       <div className="p-4">
-        <p className="homepage-p">Hello, I am Jonah. Welcome to RuntimeEscape. I haven&apos;t decided what this blog will be yet, but chances are it&apos;ll have something to do with computers.</p>
+        <p className="homepage-p">Hello, welcome to RuntimeEscape. I haven&apos;t decided what this blog will be yet, but chances are it&apos;ll have something to do with computers.</p>
 
         <p className="homepage-p">This is all on <a target="_blank" className="text-primary-light" href="https://github.com/jman793/RuntimeEscape">github</a>, please open an issue if you have feedback for this site.</p>
 

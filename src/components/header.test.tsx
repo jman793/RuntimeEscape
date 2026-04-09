@@ -9,11 +9,4 @@ describe('Header', () => {
     expect(homeLink).toBeInTheDocument();
     expect(homeLink).toHaveAttribute('href', '/');
   });
-
-  it('renders an About me link pointing to /about', () => {
-    render(<Header />);
-    const aboutLink = screen.getByRole('link', { name: 'About me' });
-    expect(aboutLink).toBeInTheDocument();
-    expect(aboutLink).toHaveAttribute('href', '/about');
-  });
 });
