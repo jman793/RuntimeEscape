@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { existsSync, readFileSync } from "fs";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next"
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
@@ -58,8 +58,12 @@ export async function getStaticProps(
 ) {
   const { slug } = ctx.params!;
 
-  // Get MDX from the file clicked on
-  const postFile = readFileSync(path.join(POSTS_PATH, `${slug}.mdx`));
+  const postPath = path.join(POSTS_PATH, `${slug}.mdx`);
+  if (!existsSync(postPath)) {
+    return { notFound: true, revalidate: 60 };
+  }
+
+  const postFile = readFileSync(postPath);
 
   const mdxSource = await serialize(postFile, { parseFrontmatter: true });
   return {
