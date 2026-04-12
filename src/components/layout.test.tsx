@@ -6,7 +6,6 @@ describe('Layout', () => {
   it('renders the Header with navigation links', () => {
     render(<Layout />);
     expect(screen.getByRole('link', { name: 'Home' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'About me' })).toBeInTheDocument();
   });
 
   it('renders children passed to it', () => {

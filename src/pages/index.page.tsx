@@ -62,14 +62,14 @@ export async function getStaticProps() {
 
 function MDXFeedItem({ postPreview }: { postPreview: BlogPost }) {
   return (
-    <div className="w-3/6 h-64 bg-neutral-muted border border-border flex flex-col">
+    <div className="w-full max-w-2xl mx-4 sm:mx-auto sm:w-3/6 h-64 bg-neutral-muted border border-border flex flex-col overflow-hidden">
       <Link href={postPreview.slug} className="flex flex-col h-full">
         <div className="px-6 pt-4 pb-2 border-b border-border">
-          <h2 className="text-center">{postPreview.title}</h2>
+          <h2 className="text-center line-clamp-2">{postPreview.title}</h2>
           <p className="text-center text-sm text-gray-400">{postPreview.date}</p>
         </div>
-        <div className="px-6 py-4 flex-1 flex items-center justify-center">
-          <p className="text-center">{postPreview.description}</p>
+        <div className="px-6 py-4 flex-1 flex items-center justify-center overflow-hidden">
+          <p className="text-center line-clamp-3">{postPreview.description}</p>
         </div>
       </Link>
     </div>

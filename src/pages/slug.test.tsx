@@ -22,7 +22,13 @@ const mockSource = {
 describe('PostPage', () => {
   it('renders the post title', () => {
     render(<PostPage source={mockSource as any} />);
-    expect(screen.getByText('My Test Post')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: 'My Test Post' })).toBeInTheDocument();
+  });
+
+  it('renders the post description and date', () => {
+    render(<PostPage source={mockSource as any} />);
+    expect(screen.getByText('A test description')).toBeInTheDocument();
+    expect(screen.getByText('2024-01-01')).toBeInTheDocument();
   });
 
   it('renders the MDX content area', () => {

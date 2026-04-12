@@ -20,12 +20,23 @@ const mdxComponents = {
 };
 
 export default function PostPage({ source }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const title = source.frontmatter.title as string;
+  const date = source.frontmatter.date as string;
+  const description = source.frontmatter.description as string;
+
   return (
     <div>
       <Head>
-        <title className="text-sky-600 border-2 border-black">{source.frontmatter.title as string}</title>
+        <title className="text-sky-600 border-2 border-black">{title}</title>
       </Head>
       <div className="w-1/2 mx-auto">
+        <header className="pt-8 pb-6 mb-6 border-b border-border text-center">
+          <h1 className="text-3xl font-bold">{title}</h1>
+          <p className="mt-2 text-sm text-gray-400">{date}</p>
+          {description && (
+            <p className="mt-4 italic text-gray-300">{description}</p>
+          )}
+        </header>
         <MDXRemote
           {...source}
           components={mdxComponents}

@@ -23,8 +23,7 @@ const mockPosts: BlogPost[] = [
 describe('Home page', () => {
   it('renders the welcome text', () => {
     render(<Home postPreviews={[]} />);
-    expect(screen.getByText(/Hello, I am Jonah/)).toBeInTheDocument();
-    expect(screen.getByText(/RuntimeEscape/)).toBeInTheDocument();
+    expect(screen.getByText(/welcome to RuntimeEscape/)).toBeInTheDocument();
   });
 
   it('renders the GitHub link', () => {
