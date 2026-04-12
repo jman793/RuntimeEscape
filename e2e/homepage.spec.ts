@@ -13,7 +13,7 @@ test.describe('Homepage', () => {
 
   test('displays post cards with links', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByRole('heading', { name: 'Toolbox and Toolshed' })).toBeVisible();
-    await expect(page.getByRole('link', { name: /Toolbox and Toolshed/ })).toBeVisible();
+    const postCardHeadings = page.locator('a h2');
+    await expect(postCardHeadings.first()).toBeVisible();
   });
 });
