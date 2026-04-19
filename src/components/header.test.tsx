@@ -9,4 +9,11 @@ describe('Header', () => {
     expect(homeLink).toBeInTheDocument();
     expect(homeLink).toHaveAttribute('href', '/');
   });
+
+  it('renders an RSS link pointing to /feed', () => {
+    render(<Header />);
+    const rssLink = screen.getByRole('link', { name: 'RSS' });
+    expect(rssLink).toBeInTheDocument();
+    expect(rssLink).toHaveAttribute('href', '/feed');
+  });
 });
