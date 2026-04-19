@@ -1,7 +1,21 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
-import Home from './index.page';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { readdirSync, readFileSync } from 'fs';
+import { serialize } from 'next-mdx-remote/serialize';
+import Home, { getStaticProps } from './index.page';
 import { BlogPost } from '../model/post';
+
+vi.mock('fs', () => {
+  const mock = {
+    readdirSync: vi.fn(),
+    readFileSync: vi.fn(),
+  };
+  return { ...mock, default: mock };
+});
+
+vi.mock('next-mdx-remote/serialize', () => ({
+  serialize: vi.fn(),
+}));
 
 const mockPosts: BlogPost[] = [
   {
@@ -55,5 +69,57 @@ describe('Home page', () => {
   it('renders no post cards when postPreviews is empty', () => {
     const { container } = render(<Home postPreviews={[]} />);
     expect(container.querySelectorAll('.bg-blue-500')).toHaveLength(0);
+  });
+});
+
+describe('getStaticProps draft filtering', () => {
+  const mockedReaddirSync = vi.mocked(readdirSync);
+  const mockedReadFileSync = vi.mocked(readFileSync);
+  const mockedSerialize = vi.mocked(serialize);
+
+  beforeEach(() => {
+    mockedReaddirSync.mockReset();
+    mockedReadFileSync.mockReset();
+    mockedSerialize.mockReset();
+  });
+
+  it('excludes posts with draft: true', async () => {
+    mockedReaddirSync.mockReturnValue(['published.mdx', 'draft.mdx'] as any);
+    mockedReadFileSync.mockReturnValue('---\ntitle: Test\n---\ncontent');
+    mockedSerialize
+      .mockResolvedValueOnce({
+        frontmatter: { title: 'Published', description: 'desc', date: '2024-01-01' },
+      } as any)
+      .mockResolvedValueOnce({
+        frontmatter: { title: 'Draft', description: 'desc', date: '2024-01-02', draft: true },
+      } as any);
+
+    const result = await getStaticProps();
+    expect(result.props.postPreviews).toHaveLength(1);
+    expect(result.props.postPreviews[0].title).toBe('Published');
+  });
+
+  it('includes posts with draft: false', async () => {
+    mockedReaddirSync.mockReturnValue(['post.mdx'] as any);
+    mockedReadFileSync.mockReturnValue('---\ntitle: Test\n---\ncontent');
+    mockedSerialize.mockResolvedValue({
+      frontmatter: { title: 'Explicit Non-Draft', description: 'desc', date: '2024-01-01', draft: false },
+    } as any);
+
+    const result = await getStaticProps();
+    expect(result.props.postPreviews).toHaveLength(1);
+    expect(result.props.postPreviews[0].title).toBe('Explicit Non-Draft');
+  });
+
+  it('includes posts with no draft field', async () => {
+    mockedReaddirSync.mockReturnValue(['post.mdx'] as any);
+    mockedReadFileSync.mockReturnValue('---\ntitle: Test\n---\ncontent');
+    mockedSerialize.mockResolvedValue({
+      frontmatter: { title: 'No Draft Field', description: 'desc', date: '2024-01-01' },
+    } as any);
+
+    const result = await getStaticProps();
+    expect(result.props.postPreviews).toHaveLength(1);
+    expect(result.props.postPreviews[0].title).toBe('No Draft Field');
   });
 });

@@ -66,6 +66,11 @@ export async function getStaticProps(
   const postFile = readFileSync(postPath);
 
   const mdxSource = await serialize(postFile, { parseFrontmatter: true });
+
+  if (mdxSource.frontmatter.draft === true) {
+    return { notFound: true, revalidate: 60 };
+  }
+
   return {
     props: {
       source: mdxSource,

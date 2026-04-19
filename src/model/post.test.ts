@@ -16,4 +16,27 @@ describe('BlogPost interface', () => {
     expect(post).toHaveProperty('slug');
     expect(post).toHaveProperty('date');
   });
+
+  it('accepts an object with the optional draft field', () => {
+    const post: BlogPost = {
+      content: 'Post body content',
+      title: 'Draft Post',
+      description: 'A draft',
+      slug: 'draft-post',
+      date: '2024-01-01',
+      draft: true,
+    };
+    expect(post).toHaveProperty('draft', true);
+  });
+
+  it('does not require the draft field', () => {
+    const post: BlogPost = {
+      content: 'Post body content',
+      title: 'Published Post',
+      description: 'A published post',
+      slug: 'published-post',
+      date: '2024-01-01',
+    };
+    expect(post.draft).toBeUndefined();
+  });
 });

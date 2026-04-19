@@ -44,10 +44,14 @@ export async function getStaticProps() {
       parseFrontmatter: true,
     });
 
-    postPreviews.push({
+    const post = {
       ...serializedPost.frontmatter,
       slug: filePath.replace(".mdx", ""),
-    } as BlogPost)
+    } as BlogPost;
+
+    if (!post.draft) {
+      postPreviews.push(post);
+    }
   }
 
   return {

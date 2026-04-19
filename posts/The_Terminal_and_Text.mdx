@@ -1,0 +1,61 @@
+---
+title: "The Terminal and Text"
+description: "Plaintext in the terminal, and why it is so powerful. This was one of the main drivers to move as much of my workflow to the terminal, so I wanted to share some simple thoughts on why it's so powerful."
+draft: false
+date: "2026-04-19"
+---
+
+<span className="p-4">
+## The Terminal and Text
+
+One of the superpowers of the terminal is the language it uses, plaintext. Plaintext may seem like nothing special on its own. You see it every day of your life, and most likely you have been able to read/interpret it for decades. 
+It is deceptively simple and yet we still try to overcomplicate it. My opinion is that anything meant to be read/interpreted by humans is best presented as plaintext. Things like JSON and CSV are great to interpret with programs due to the ability to standardize their format (where would we be without CSV headers), but plaintext is intuitively interpreted by our brains and is easy to read.
+</span>
+
+<span className="p-4">
+## Text as a Data Format
+
+The real way to manage large amounts of data that should be interpreted by humans is to hold in files that have each piece of data separated by newlines and spaces (or any other delimiting REGEX that you want). This is similar to CSV, but CSV begins to be overkill if there aren't any "columns" to your data.
+
+```
+names 
+john 
+susy
+james
+don
+```
+
+Even if you saw this file with 1,000,000 lines in it, it would be extremely easy to derive things from this data set.
+</span>
+
+<span className="p-4">
+## The Genius of Bash and Linux Commands
+
+The Linux command line and Bash have many things that are meant to read and interpret plaintext data.
+
+```
+echo -> prints plain text input
+head -> prints the top lines of input text
+tail -> prints the bottom lines of input text
+grep -> pattern match on plaintext
+sed -> manipulate plaintext streams
+awk -> write programs to operate on text
+```
+
+Learning these commands can help you to solve certain problems much more efficiently than spinning up a new programming environment, getting all your syntax and imports right, and writing a script.
+The next time you get a task that involves an output of some data meant to be read by a human, try to solve it with Bash and Linux commands. You may be surprised how a little bit of practice can unlock a superpower for you.
+</span>
+
+<span className="p-4">
+## AI and Plaintext
+
+AI lives in plaintext. Learning how to manipulate, format, and teach your computer to interpret it can help you to use AI in order to give yourself superpowers. 
+Using things like CLIs can help your AI understand how systems work, and how to interact with them.
+
+I think one interesting trend coming in with Agent Accessibility is the real return of CLI tools being a core part of an application. 
+Those that have lived on the terminal for a long time are well versed in how to operate a CLI, but seemingly CLI tools are much more efficient than dealing with the web.
+
+I predict you will see a shift to using CLI tools for many, many tasks in the coming future. 
+In order to handle the output, and effectively police the AI I recommend becoming well versed in plaintext, specifically how it's manipulated on the Linux command line.
+</span>
+
