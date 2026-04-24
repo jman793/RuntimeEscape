@@ -16,4 +16,10 @@ describe('Layout', () => {
     );
     expect(screen.getByText('Test child content')).toBeInTheDocument();
   });
+
+  it('renders the Footer with social links', () => {
+    render(<Layout />);
+    expect(screen.getByRole('link', { name: 'GitHub' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'X' })).toBeInTheDocument();
+  });
 });
